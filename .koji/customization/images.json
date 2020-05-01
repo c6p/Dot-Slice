@@ -1,7 +1,8 @@
 {
   "images": {
     "background": "",
-    "logo": ""
+    "logo": "",
+    "game": "https://images.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/hghr3-starfish.png"
   },
   "@@editor": [
     {
@@ -20,6 +21,12 @@
           "key": "logo",
           "name": "Logo Image",
           "description": "Your brand logo - Scaled down to fit within 256x256 (aspect ratio maintained)",
+          "type": "image"
+        },
+        {
+          "key": "game",
+          "name": "Game Image",
+          "description": "",
           "type": "image"
         }
       ]

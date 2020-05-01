@@ -1,5 +1,5 @@
 import Koji from '@withkoji/vcc';
-import Phaser from 'phaser/dist/phaser-arcade-physics.min.js';
+import Phaser from 'phaser';
 import './styles.css';
 import { CONFIG } from 'config';
 import { MenuScene } from 'scenes/menu';
@@ -13,20 +13,35 @@ var config = {
         height: CONFIG.HEIGHT,
         autoCenter: Phaser.Scale.Center.CENTER_BOTH
     },
+  fps: {
+    target: 60
+  },
   disableContextMenu: true,
   physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 0 },
-      debug: true
+    default: 'matter',
+    matter: {
+      autoUpdate: false,
+      restingThresh: 0.01,
+      //enableSleeping: true,
+      gravity: {
+        x: 0,
+        y: 0
+      },
+      debug: {
+        //showStaticBody: true,
+        //showBroadphase: true,
+        //showCollisions: true,
+        showConvexHulls: true,
+        //showSleeping: true,
+      }
     }
   },
   scene: [
-    MenuScene,
     GameScene,
+    MenuScene,
     UIScene
   ],
-  transparent: true
+  transparent: true,
 }
 
 var WebFont = require('webfontloader');
