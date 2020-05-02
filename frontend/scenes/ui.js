@@ -24,9 +24,9 @@ export class UIScene extends Phaser.Scene {
 
     // pause menu
     const menu = [
-      {text: "Resume", action: this.resume_game, size: 100 },
-      {text: "Restart Level", action: this.restart_level, size: 70 },
-      {text: "Select Level", action: this.select_level, size: 75},
+      {text: Koji.config.strings.resume, action: this.resume_game, size: 100 },
+      {text: Koji.config.strings.restart, action: this.restart_level, size: 70 },
+      {text: Koji.config.strings.select_level, action: this.select_level, size: 75},
     ]
     const mask = this.add.rectangle(0,0,SIZE,SIZE,0x000000, 0.7).setOrigin(0,0);
     this.game.pauseMenu = this.add.group([mask]);
@@ -41,7 +41,7 @@ export class UIScene extends Phaser.Scene {
     this.game.pause = this.add.image(CONFIG.UI_ICON_PADDING, CONFIG.UI_ICON_PADDING, 'pause').setOrigin(0,0).setInteractive().on('pointerdown', this.pause_menu, this).setVisible(false);
 
     // win menu
-    const winText = this.add.text(SIZE/2, 250, "YOU WIN!", { fontFamily: Koji.config.strings.font.family, fontSize: '96px', fill: Koji.config.colors.button_font }).setOrigin(0.5)
+    const winText = this.add.text(SIZE/2, 250, Koji.config.strings.win, { fontFamily: Koji.config.strings.font.family, fontSize: '96px', fill: Koji.config.colors.button_font }).setOrigin(0.5)
     this.game.areaText = this.add.text(SIZE/2, 450, "", { fontFamily: Koji.config.strings.font.family, fontSize: '96px', fill: Koji.config.colors.button_font }).setOrigin(0.5)
     this.game.slicesText = this.add.text(SIZE/2, 600, "", { fontFamily: Koji.config.strings.font.family, fontSize: '96px', fill: Koji.config.colors.button_font }).setOrigin(0.5)
     const rect = this.add.rectangle(190, 800, 700, 150, color).setOrigin(0,0).setInteractive().on('pointerdown', this.select_level, this);

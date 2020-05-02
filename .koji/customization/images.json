@@ -4873,12 +4873,6 @@
           "type": "image"
         },
         {
-          "key": "game",
-          "name": "Game Image",
-          "description": "",
-          "type": "image"
-        },
-        {
           "key": "levels",
           "name": "Levels",
           "description": "Customize level",

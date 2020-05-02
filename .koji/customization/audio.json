@@ -21,19 +21,19 @@
         {
           "key": "cut",
           "name": "Cut sound",
-          "description": "Music looping in background during gameplay",
+          "description": "Sound played for successful cut",
           "type": "sound"
         },
         {
           "key": "nocut",
           "name": "No-cut sound",
-          "description": "Music looping in background during gameplay",
+          "description": "Sound played for unsuccessful cut",
           "type": "sound"
         },
         {
           "key": "hit",
           "name": "Hit sound",
-          "description": "Music looping in background during gameplay",
+          "description": "Sound played for obstacle hits",
           "type": "sound"
         }
       ]

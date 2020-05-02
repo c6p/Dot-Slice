@@ -29,9 +29,13 @@
         "regular": "http://fonts.gstatic.com/s/comfortaa/v28/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMPrQVIT9c2c8.ttf"
       }
     },
-    "title": "Dot Slice",
+    "title": "DOT SLICE",
     "play_button": "Play",
-    "main_menu": "Main Menu"
+    "main_menu": "Main Menu",
+    "win": "YOU WIN!",
+    "select_level": "Select Level",
+    "resume": "Resume",
+    "restart": "Restart Level"
   },
   "@@editor": [
     {
@@ -60,8 +64,32 @@
         },
         {
           "key": "main_menu",
-          "name": "Main menu text",
-          "description": "Text displayed on the play button",
+          "name": "Main menu button text",
+          "description": "Text displayed on the menu button",
+          "type": "string"
+        },
+            {
+          "key": "win",
+          "name": "Win text",
+          "description": "Text displayed when level completed",
+          "type": "string"
+        },
+              {
+          "key": "select_level",
+          "name": "Level select button text",
+          "description": "Text displayed on the level-select button",
+          "type": "string"
+        },
+                {
+          "key": "resume",
+          "name": "Resume button text",
+          "description": "Text displayed on the resume button",
+          "type": "string"
+        },
+                {
+          "key": "restart",
+          "name": "Restart level button text",
+          "description": "Text displayed on the level-restart button",
           "type": "string"
         }
       ]
