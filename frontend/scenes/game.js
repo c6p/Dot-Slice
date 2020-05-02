@@ -400,6 +400,7 @@ export class GameScene extends Phaser.Scene {
     let oldPath = null;
 
     const applyPath = () => {
+      this.game.cut.play();
       this.slices++;
       this.target = (outline.area / this.area);
       this.game.progress.width = this.target * WIDTH;  // TODO scale
@@ -435,10 +436,15 @@ export class GameScene extends Phaser.Scene {
       const cb = this.checkBalls(this.drawPath);
       if (co || cb) {
         this.drawPath = null;
-        if (cb && oldPath !== null) {
-          outline = oldPath;
-          oldPath = null;
-          applyPath()
+        if (cb) {
+          this.game.nocut.play();
+          if (oldPath !== null) {
+            outline = oldPath;
+            oldPath = null;
+            applyPath()
+          }
+        } else {
+          this.game.hit.play();
         }
         return true;
       }
@@ -487,6 +493,7 @@ export class GameScene extends Phaser.Scene {
             const contains1 = containsBalls(path1);
             const contains2 = containsBalls(path2);
             if (contains1 && contains2) {
+              this.game.nocut.play();
             } else if (contains1) {
               oldPath = outline;
               outline = path1;
