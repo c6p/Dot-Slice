@@ -16,6 +16,14 @@ const DURATION = 20000;
 let [oldWidth, oldHeight] = [IMG_SIZE, IMG_SIZE];
 let scale = 1;
 
+const tutor = [
+  [["SLICE animals beyond the white marker.", "Click & drag to draw a SLICE."], 300],
+  ["Be careful! White edges are unSLICable.", 300],
+  ["Don't SLICE between the balls.", 300],
+  ["Beware! White edges are marching.", 300],
+  [["What does not kill me makes me larger.", "Be quick!"], 1000],
+]
+
 function random(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -117,12 +125,6 @@ export class GameScene extends Phaser.Scene {
       key: 'GameScene'
     })
   }
-
-  // DONE victory condition, progress
-  // TODO scale tween
-  // TODO resolveCrossings in update
-  // TODO tutorial
-  // DONE read balls, place random
 
   setObstacles(obstacles, path) {
 
@@ -296,6 +298,11 @@ export class GameScene extends Phaser.Scene {
   }
 
   create() {
+    if (this.i < tutor.length)
+      this.add.text(50, 30, tutor[this.i][0],
+        { fontFamily: Koji.config.strings.font.family, fontSize: '30px', fill: Koji.config.colors.button_font, wordWrap: {width: tutor[this.i][1]}, lineSpacing: 5 })
+        .setOrigin(0,0)
+
     this.slices = 0;
     const { obstacles, targetArea, willScale, backgroundColor, balls } = this.level;
     this.game.progressBar.setVisible(true);
@@ -399,14 +406,19 @@ export class GameScene extends Phaser.Scene {
     this.drawPath = null;
     let oldPath = null;
 
-    const applyPath = () => {
-      this.game.cut.play();
-      this.slices++;
-      this.target = (outline.area / this.area);
+
+    this.calcArea = (scale=1) => {
+      this.target = (outline.area*(scale*scale) / this.area);
       this.game.progress.width = this.target * WIDTH;  // TODO scale
       if (this.target < targetArea) {
         this.win();
       }
+    }
+
+    const applyPath = () => {
+      this.game.cut.play();
+      this.slices++;
+      this.calcArea();
 
       if (willScale) {
       //console.log(path.area, this.area, this.progress.width)
@@ -558,6 +570,9 @@ export class GameScene extends Phaser.Scene {
     for (let i = 2; i < this.level.obstacles.length; i++)
       this.setState(i, t);
 
+    if (this.level.willScale && this.cameras.main.zoom !== 1) {
+      this.calcArea(this.cameras.main.zoom);
+    }
     /*window.requestAnimationFrame(() => {
       if (this.checkCrossings(this.drawPath)) {
         this.graphics.clear();

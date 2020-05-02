@@ -59,10 +59,12 @@ export class MenuScene extends Phaser.Scene {
     }
 
     // audio
-    if (Koji.config.audio.background) {
+    if (Koji.config.audio.background && !this.background_music) {
       this.background_music = this.sound.add('background');
       this.background_music.setVolume(0.8);
       this.background_music.setLoop(true);
+      if (!this.background_music.isPlaying)
+        this.background_music.play();
     }
     this.game.cut = this.sound.add('cut');
     this.game.nocut = this.sound.add('nocut');
@@ -72,9 +74,6 @@ export class MenuScene extends Phaser.Scene {
   update() {}
 
   start_game() {
-    if (Koji.config.audio.background) {
-      this.background_music.play();
-    }
     //this.scene.start("GameScene", {level:0});
     this.scene.start("LevelSelectScene");
   }
