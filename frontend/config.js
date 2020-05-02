@@ -1,4 +1,5 @@
 export const CONFIG = {
+  SIZE: 1080,
 	WIDTH: 1080,
 	HEIGHT: 1080,
 	UI_ICON_SIZE: 48,

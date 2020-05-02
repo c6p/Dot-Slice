@@ -29,8 +29,9 @@
         "regular": "http://fonts.gstatic.com/s/comfortaa/v28/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMPrQVIT9c2c8.ttf"
       }
     },
-    "title": "Game Template",
-    "play_button": "Play"
+    "title": "Dot Slice",
+    "play_button": "Play",
+    "main_menu": "Main Menu"
   },
   "@@editor": [
     {
@@ -54,6 +55,12 @@
         {
           "key": "play_button",
           "name": "Play button text",
+          "description": "Text displayed on the play button",
+          "type": "string"
+        },
+        {
+          "key": "main_menu",
+          "name": "Main menu text",
           "description": "Text displayed on the play button",
           "type": "string"
         }

@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import './styles.css';
 import { CONFIG } from 'config';
 import { MenuScene } from 'scenes/menu';
+import { LevelSelectScene } from 'scenes/levelselect';
 import { GameScene } from 'scenes/game';
 import { UIScene } from 'scenes/ui';
 
@@ -21,25 +22,27 @@ var config = {
     default: 'matter',
     matter: {
       autoUpdate: false,
-      restingThresh: 0.01,
+      restingThresh: 0.001,
       //enableSleeping: true,
       gravity: {
         x: 0,
         y: 0
       },
-      debug: {
-        //showStaticBody: true,
-        //showBroadphase: true,
+      debug: false
+      /*debug: {
+        showStaticBody: true,
+        showBroadphase: true,
         //showCollisions: true,
         showConvexHulls: true,
         //showSleeping: true,
-      }
+      }*/
     }
   },
   scene: [
-    GameScene,
     MenuScene,
-    UIScene
+    LevelSelectScene,
+    GameScene,
+    UIScene,
   ],
   transparent: true,
 }

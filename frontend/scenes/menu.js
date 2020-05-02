@@ -2,6 +2,9 @@ import Koji from '@withkoji/vcc';
 import { CONFIG } from '../config';
 import unmuteIcon from '../assets/musicOn.png';
 import muteIcon from '../assets/musicOff.png';
+import pauseIcon from '../assets/pause.png';
+
+const {SIZE} = CONFIG;
 
 export class MenuScene extends Phaser.Scene {
 
@@ -24,6 +27,7 @@ export class MenuScene extends Phaser.Scene {
 
     this.load.image('mute', muteIcon);
     this.load.image('unmute', unmuteIcon);
+    this.load.image('pause', pauseIcon);
 
 
     if (Koji.config.audio.background) {
@@ -31,7 +35,7 @@ export class MenuScene extends Phaser.Scene {
     }
 
   }
-  
+ 
   create() {
     this.scene.launch("UIScene");
 
@@ -43,7 +47,7 @@ export class MenuScene extends Phaser.Scene {
     if (Koji.config.strings.play_button) {
       this.graphics = this.add.graphics();
       this.graphics.fillStyle(Koji.config.colors.button.replace("#", "0x"), 1.0);
-      this.graphics.fillRoundedRect(CONFIG.WIDTH/4, CONFIG.HEIGHT/2+275,CONFIG.WIDTH/2,50)
+      this.graphics.fillRect(CONFIG.WIDTH/4, CONFIG.HEIGHT/2+275,CONFIG.WIDTH/2,50)
         .setInteractive(new Phaser.Geom.Rectangle(CONFIG.WIDTH/4, CONFIG.HEIGHT/2+275,CONFIG.WIDTH/2,50), Phaser.Geom.Rectangle.Contains)
         .on('pointerdown', this.start_game, this);
       this.startText = this.add.text(CONFIG.WIDTH/2, CONFIG.HEIGHT/2+300, Koji.config.strings.play_button, { fontFamily: Koji.config.strings.font.family, fontSize: '30px', fill: Koji.config.colors.button_font });
@@ -65,7 +69,8 @@ export class MenuScene extends Phaser.Scene {
     if (Koji.config.audio.background) {
       this.background_music.play();
     }
-    this.scene.start("GameScene", {level:0});
+    //this.scene.start("GameScene", {level:0});
+    this.scene.start("LevelSelectScene");
   }
 
 }
