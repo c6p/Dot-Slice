@@ -487,7 +487,6 @@ export class GameScene extends Phaser.Scene {
             const contains1 = containsBalls(path1);
             const contains2 = containsBalls(path2);
             if (contains1 && contains2) {
-            } else if (contains2) {
             } else if (contains1) {
               oldPath = outline;
               outline = path1;
