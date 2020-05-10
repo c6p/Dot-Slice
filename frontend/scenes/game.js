@@ -2,7 +2,7 @@ import Koji from '@withkoji/vcc';
 import { CONFIG } from '../config';
 import paper from 'paper/dist/paper-core'
 
-const { Bounds, Bodies, Body, Vector, Vertices, Sleeping } = Phaser.Physics.Matter.Matter;
+const { Bounds, Bodies, Body, Vector } = Phaser.Physics.Matter.Matter;
 const SIZE = 1080;
 const OFFSET = SIZE / 2;
 const IMG_SIZE = 1024;
@@ -14,16 +14,12 @@ const THICKNESS_VISUAL = 8
 const TOLERANCE = 0.000001
 const DURATION = 20000;
 
-let [oldWidth, oldHeight] = [IMG_SIZE, IMG_SIZE];
+const COLOR = Koji.config.colors.gameObjects.replace("#", "0x");
+const SLICES = Koji.config.strings.slices + ": ";
+const AREA = Koji.config.strings.area + ": ";
+
 let scale = 1;
 
-const tutor = [
-  [["SLICE animals beyond the white marker.", "Click & drag to draw a SLICE."], 300],
-  ["Be careful! White edges are unSLICable.", 300],
-  ["Don't SLICE between the balls.", 300],
-  ["Beware! White edges are marching.", 300],
-  [["What does not kill me makes me larger.", "Be quick!"], 1000],
-]
 
 function random(min, max) {
   return Math.random() * (max - min) + min;
@@ -59,7 +55,6 @@ function splitPath(path, crossingPath) {
   const f = Math.fround;
   const findIndex = (path, p) => path.segments.findIndex(({ point: { x, y } }) => f(p.x) === f(x) && f(p.y) === f(y))
 
-  //const isEqual = (p1, p2) => f(p1._x) === f(p2._x) && f(p1._y) === f(p2._y);
 
   const cf = crossingPath.firstSegment.point;
   const cl = crossingPath.lastSegment.point;
@@ -108,7 +103,6 @@ function setParts(body, parts) {
   if (body.parts.length === 1)
     return;
 
-  const s = SIZE / 2;
   const vertices = [{ x: 0, y: 0 }, { x: SIZE, y: 0 }, { x: SIZE, y: SIZE }, { x: 0, y: SIZE }];
   Bounds.update(body.bounds, vertices, body.velocity);
 
@@ -121,16 +115,6 @@ function getScale({ _width, _height }) {
   const [gx, gy] = [width / IMG_SIZE, height / IMG_SIZE];
   return Math.max(gx, gy);
 }
-/*function setScale(scale) {
-  oldWidth = Math.min(IMG_SIZE*scale));
-  oldHeight = Math.min(IMG_SIZE*scale));
-  //return [oldWidth, oldHeight];
-}*/
-
-
-//function randCoords() {
-//  return [...Array(2).keys()].map(() => random(0, IMG_SIZE-1));
-//}
 
 export class GameScene extends Phaser.Scene {
 
@@ -141,19 +125,17 @@ export class GameScene extends Phaser.Scene {
   }
 
   setObstacles(obstacles, path) {
-
     const g = this.obstacles;
     const o = this.obstaclePaths;
     for (let i = 1; i < g.length; i++) {
       let graphics = g[i];
       graphics.clear()
-      graphics.lineStyle(THICKNESS_VISUAL, 0xffffff);
-      graphics.fillStyle(0xffffff);
+      graphics.lineStyle(THICKNESS_VISUAL, COLOR);
+      graphics.fillStyle(COLOR);
       graphics.beginPath();
       o[i].removeChildren();
     }
 
-    //for (let p of paths) {
     const p = path;
     let i = p[1].index || 0;
     if (i > 0) {
@@ -190,11 +172,10 @@ export class GameScene extends Phaser.Scene {
       o[i].moveTo(p[p.length - 1]);
       o[i].lineTo(p[0]);
     }
-    //}
     for (let i = 1; i < obstacles.length; i++) {
       g[i].strokePath()
     }
-    const radius = THICKNESS_VISUAL/2;
+    const radius = THICKNESS_VISUAL / 2;
     for (let j = 1; j < p.length; j++) {
       let i = p[j].index || 0;
       if (i === 0)
@@ -224,11 +205,6 @@ export class GameScene extends Phaser.Scene {
       addLine(o, p);
     }
     addLine(path[path.length - 1], path[0]);  // close path
-    // ending cap
-    //const p = path[path.length - 1];
-    //const cap = Bodies.circle(p.x + off.x, p.y + off.x, r);
-    //parts.push(cap);
-    //}
     return parts;
   }
 
@@ -237,9 +213,7 @@ export class GameScene extends Phaser.Scene {
     ctx.globalCompositeOperation = 'source-over';
     ctx.clearRect(0, 0, SIZE, SIZE);
     ctx.globalCompositeOperation = 'xor';
-    //for (let path of paths) {
     fillPath(ctx, path);
-    //}
     texture.refresh()
   }
 
@@ -262,7 +236,6 @@ export class GameScene extends Phaser.Scene {
       graphics.angle = bg.angle = angle;
       graphics.alpha = bg.alpha = alpha;
       duration *= x / (512 * 8);
-      //console.log(x,y,angle,alpha,duration);
       [x, y, angle, alpha] = [X_OFFSET, Y_OFFSET, 0, 1];
     } else {
       callback();
@@ -282,35 +255,10 @@ export class GameScene extends Phaser.Scene {
           callback();
       }
     });
-    //bg.setVisible(false)
-    //graphics.setVisible(false)
-    //const container = this.add.container(0, 0, [bg,graphics]);
-    //container.setSize(64, 64);
-    //this.matter.add.gameObject(container);
-    //const {x,y} = container.body.position;
-    //Body.applyForce(container.body, {x:0,y:0}, {x:0,y:0.01});
-    //bg.setPosition(50,50)
-    //graphics.setPosition(50,50)
-    //return container;
-    //this.matter.add([bg, mask])
   }
-  /*erasePath(texture, path) {
-    const ctx = texture.context;
-    ctx.globalCompositeOperation = 'destination-out';
-    fillPath(ctx, path);
-    texture.refresh()
-  }
-
-  addPath(texture, path) {
-    const ctx = texture.context;
-    ctx.globalCompositeOperation = 'source-over';
-    fillPath(ctx, path);
-    ctx.stroke(); // fix white borders
-    texture.refresh()
-  }*/
 
   createBall(x, y, radius) {
-    const circle = this.add.circle(x, y, radius, 0xffffff)
+    const circle = this.add.circle(x, y, radius, COLOR)
     circle.setStrokeStyle(1, 0x666666);
     let ball = this.matter.add.gameObject(circle, { shape: { type: 'circle', radius }, restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0, render: { visible: false } });
     Body.applyForce(circle.body, { x, y }, { x: random(-0.015, 0.015), y: random(-0.015, 0.015) });
@@ -331,8 +279,6 @@ export class GameScene extends Phaser.Scene {
     for (let i = 1; i < o.length; i++) {
       if (!g[i].visible)
         continue;
-      //const c = drawPath.getIntersections(o[i]);
-      //if (c.length) {
       if (drawPath.intersects(o[i])) {
         return drawPath.getIntersections(o[i])[0].point;
       }
@@ -341,8 +287,6 @@ export class GameScene extends Phaser.Scene {
   }
   checkBalls(drawPath) {
     for (const b of this.balls) {
-      //const c = drawPath.getIntersections(paper.Path.Circle(b, b.geom._radius));
-      //if (c.length) {
       if (drawPath.intersects(paper.Path.Circle(b, b.geom._radius))) {
         return true;
       }
@@ -361,6 +305,7 @@ export class GameScene extends Phaser.Scene {
   init({ level }) {
     this.i = level;
     this.level = Koji.config.images.levels[level];
+    this.tutor = Koji.config.strings.tutorial;
   }
 
   preload() {
@@ -370,12 +315,14 @@ export class GameScene extends Phaser.Scene {
   }
 
   create() {
-    if (this.i < tutor.length)
-      this.add.text(50, 30, tutor[this.i][0],
-        { fontFamily: Koji.config.strings.font.family, fontSize: '30px', fill: Koji.config.colors.button_font, wordWrap: { width: tutor[this.i][1] }, lineSpacing: 5 })
+    if (this.i < this.tutor.length)
+      this.add.text(30, 30, this.tutor[this.i],
+        { fontFamily: Koji.config.strings.font.family, fontSize: '30px', fill: Koji.config.colors.button_font, wordWrap: { width: 1000 }, lineSpacing: 5 })
         .setOrigin(0, 0)
 
     this.slices = 0;
+    this.game.slices.setText(SLICES+this.slices);
+
     const { obstacles, targetArea, willScale, backgroundColor, balls } = this.level;
     this.game.progressBar.setVisible(true);
     this.game.pause.setVisible(true);
@@ -390,7 +337,6 @@ export class GameScene extends Phaser.Scene {
     const pathmask = this.add.image(0, 0, 'pathmask').setOrigin(0, 0).setVisible(false);
     const bg = this.add.image(X_OFFSET, Y_OFFSET, 'game').setOrigin(0, 0);
     bg.mask = pathmask.createBitmapMask();
-    //bg.setVisible(false)
 
     this.cameras.main.setBackgroundColor(backgroundColor)
     this.cameras.main.setScroll(0, -Y);
@@ -398,7 +344,6 @@ export class GameScene extends Phaser.Scene {
     const parts = this.setPathBounds(path);
     let body = Body.create({
       isStatic: true,
-      //isSleeping: false,
       restitution: 1,
       parts: [],
       render: { visible: true },
@@ -406,10 +351,6 @@ export class GameScene extends Phaser.Scene {
     });
     setParts(body, parts);
     this.matter.world.add(body);
-
-    //this.group = this.add.group([texture, pathmask, bg, body]);
-    //this.game.scale.setGameSize(512, 512);
-    //this.scale.setGameSize(800, 800);
 
     this.obstacles = [null]
     this.obstaclePaths = [null]
@@ -422,14 +363,12 @@ export class GameScene extends Phaser.Scene {
     }
     this.setObstacles(obstacles, path);
 
-    //this.ballsScale = this.tweens.add({ scale: 1, globalScale: 1, duration: DURATION, paused: true, target: gameScale onUpdate: (tween, target) });
-
     const lineGraphics = this.add.graphics();
-    lineGraphics.fillStyle(0xffffff, 1);
+    lineGraphics.fillStyle(COLOR, 1);
     lineGraphics.fillCircle(3, 3, 3);
     lineGraphics.generateTexture("line_dot");
     lineGraphics.clear();
-    lineGraphics.fillStyle(0xffffff, 1);
+    lineGraphics.fillStyle(COLOR, 1);
     lineGraphics.fillRect(-5, -5, 10, 10);
     lineGraphics.generateTexture("line_hit");
     lineGraphics.destroy();
@@ -437,74 +376,26 @@ export class GameScene extends Phaser.Scene {
     this.lineEmitter = lineParticles.createEmitter({
       on: false,
       quantity: 1,
-      //speedY: -100,
       speedX: { min: -50, max: 50 },
       gravityY: 1000,
       lifespan: 2000,
       particleBringToTop: true,
-      //bounds: { x: OFFSET, y: OFFSET, width: WIDTH, height: 2*HEIGHT}
     }).reserve(100);
 
     const hitParticles = this.add.particles("line_hit");
     const shape1 = new Phaser.Geom.Circle(0, 0, 15);
     this.hitEmitter = hitParticles.createEmitter({
       on: false,
-      //quantity: 1,
       speedY: { min: -30, max: 30 },
       speedX: { min: -30, max: 30 },
-      //gravityY: 1000,
       lifespan: 300,
       particleBringToTop: true,
       emitZone: { type: 'edge', source: shape1, quantity: 6 }
-      //bounds: { x: OFFSET, y: OFFSET, width: WIDTH, height: 2*HEIGHT}
     }).reserve(6);
 
 
     let newPath = null;
     this.pieceTween = null;
-    //const piecemask = this.make.image({x:0,y:0, key:'piecemask', add: false}).setOrigin(0, 0);
-    /*var textures = this.textures;
-    const piecemask = this.make.image({x:0,y:0, key:'piecemask', add: false}).setOrigin(0, 0);
-    let pieceSource = {
-        getRandomPoint: function (vec)
-        {
-          let [x, y] = [0,0];
-          if (newPath !== null) {
-            const {left, top, width, height} = newPath.bounds;
-            console.log(left, top, width, height)
-            do
-            {
-                x = Phaser.Math.Between(left, left+width-1);
-                y = Phaser.Math.Between(top, top+height-1);
-            //} while (newPath.contains(new paper.Point(x,y)))
-                var pixel = textures.getPixel(left+x, top+y, 'piecemask');
-            console.log(x, y, pixel)
-            } while (pixel.alpha < 255);
-          }
-
-            return vec.setTo(x, y);
-        }
-    };
-    //const pieceShape = new Phaser.Geom.Polygon([]);
-    let particles = this.add.particles('burn');
-    this.pieceEmitter = particles.createEmitter({
-        //emitZone: { type: 'random', source: pieceSource },
-        lifespan: 1000,
-        //speedY: { min: -500, max: 500 },
-        //speedX: { min: -500, max: 500 },
-        //speedY: 500,
-        //speedX: 500,
-        speed: 500,
-        //angle: -90,
-        //gravityY: 300,
-        //scale: { start: 0.4, end: 0 },
-        //quantity: 50,
-        blendMode: 'ADD',
-        on: false
-    });
-    particles.mask = new Phaser.Display.Masks.BitmapMask(this, piecemask);
-    //particles.visible = false;
-    //.mask = new Phaser.Display.Masks.BitmapMask(this, particles);*/
 
     let outline = new paper.Path(path.map(({ x, y, index }) => {
       let s = new paper.Segment(new paper.Point(x, y));
@@ -526,14 +417,12 @@ export class GameScene extends Phaser.Scene {
         circle = new paper.Path.Circle(p, b);
       }
       ballPath.addChild(circle);
-      //console.log(ballPath);
       this.balls.push(this.createBall(p.x, p.y, b));
     }
-    //this.balls.map(x => console.log(x.body.mass))
     this.firstBallRadius = this.balls.length ? this.balls[0].radius : 1;
 
     this.graphics = this.add.graphics();
-    this.graphics.fillStyle(0xffffff, 1);
+    this.graphics.fillStyle(COLOR, 1);
     const containsBalls = (path) => {
       for (const b of this.balls) {
         if (path.contains(b))
@@ -548,36 +437,28 @@ export class GameScene extends Phaser.Scene {
 
     this.calcArea = (scale = 1) => {
       this.target = (outline.area * (scale * scale) / this.area);
-      this.game.progress.width = this.target * WIDTH;  // TODO scale
+      this.game.progress.width = this.target * WIDTH;
       if (this.target < targetArea) {
         this.win();
       }
     }
 
     const applyPath = () => {
-      this.slices++;
       this.calcArea();
 
       if (willScale) {
-        //console.log(path.area, this.area, this.progress.width)
         const scale = getScale(outline.bounds);
-        //const [w, h] = setScale(scale);
         this.scaleDownBalls(scale);
-        //this.scaleUpGame()
-        //console.log(scale, globalScale)
         const { _x, _y, _width, _height } = outline.bounds;
-        //this.cameras.main.setViewport(_x, _y, oldWidth, oldHeight);
         const factor = 1 / scale;
         this.cameras.main.pan(_x + _width / 2, -Y + _y + _height / 2, DURATION / 5, 'Linear', true);
         const zoom = this.cameras.main.zoom < factor;
-        this.cameras.main.zoomTo(factor, zoom ? DURATION : DURATION/4, 'Linear', true);
+        this.cameras.main.zoomTo(factor, zoom ? DURATION : DURATION / 4, 'Linear', true);
         console.log(scale, factor)
-        //this.cameras.main.setScroll(0,0);
-        //this.scene.scale = 1/globalScale;
       }
 
       if (newPath !== null) {
-        let tmpPath = newPath.segments.map(({ point: { x, y, index } }) => { return { x, y } });
+        let tmpPath = newPath.segments.map(({ point: { x, y } }) => { return { x, y } });
         this.setMaskedPath(tmpPath, oldPath === null, () => {
           path = outline.segments.map(({ point: { x, y, index } }) => { return { x, y, index } });
           this.drawPathMask(texture, path);
@@ -586,19 +467,6 @@ export class GameScene extends Phaser.Scene {
           setParts(body, parts)
         });
       }
-      /*let tmpPath = newPath.segments.map(({ point: { x, y, index } }) => { return { x, y } });
-      //pieceShape.setTo(tmpPath);
-      this.drawPathMask(this.piecemaskTexture, tmpPath);
-      const c = newPath.bounds.center;
-      const {width, height} = newPath.bounds
-      const speed = Math.max(width, height);
-      this.pieceEmitter.setScale(speed/512);
-      this.pieceEmitter.setSpeed({min:-2*speed, max:2*speed});
-      this.pieceEmitter.explode(1000, c.x, c.y);
-    }*/
-
-      //const parts = this.setPathBounds(path, { x: 0, y: 0 });
-      //setParts(body, parts)
     }
 
     const lineDraw = (points, len, graphics) => {
@@ -641,6 +509,7 @@ export class GameScene extends Phaser.Scene {
       const co = this.checkObstacles(this.drawPath);
       const cb = this.checkBalls(this.drawPath);
       if (co || cb) {
+        this.addSlice();
         if (cb) {
           this.game.crash.play();
 
@@ -673,25 +542,17 @@ export class GameScene extends Phaser.Scene {
       const [x, y] = [pointer.worldX, pointer.worldY];
       isInside = outline.contains({ x, y });
       let prevPoint = point;
-      //const { x, y } = pointer;
-      //console.log(x,y)
       point = new paper.Point(x, y);
       if (isInside) {
         if (wasInside === false) { // enter path
-          // console.log("WAS OUTSIDE", x, y)
           this.drawPath = new paper.Path([prevPoint, point]);
           const cross = this.drawPath.getCrossings(outline);
           if (cross.length) {
-            //if (cross.length > 1)
-            //  console.log("IN CROSS", cross)
             this.drawPath.removeSegment(0);
             this.drawPath.insert(0, cross[0].point)
           }
-          //this.drawPath.add(outline.getNearestPoint(point), point);
         } else {
           if (this.drawPath !== null) {
-            //console.log("WAS INSIDE", x, y)
-            // if (this.drawPath.length) {
             this.drawPath.add(point);
             const cross = this.drawPath.getCrossings();
             if (cross.length) {
@@ -700,27 +561,22 @@ export class GameScene extends Phaser.Scene {
             }
             resolveCrossings()
           }
-          //}
         }
       } else {
-        //console.log("IS OUTSIDE", x, y)
         if (this.drawPath !== null && this.drawPath.length && wasInside === true) {  // exit path
-          //const point = new paper.Point(x, y);
+
           this.drawPath.add(point);
           this.drawPath.simplify(10);
           this.drawPath.flatten(5);
           const cross = this.drawPath.getCrossings(outline);
           if (cross.length) {
-            //if (cross.length > 1)
-            //  console.log("OUT CROSS", cross)
             this.drawPath.splitAt(cross[0]);
-            //this.drawPath.removeSegment(this.drawPath.length-1);
             this.drawPath.add(cross[0].point)
           }
-          //this.drawPath.add(outline.getNearestPoint(point));
 
           if (!resolveCrossings()) {
-            // clone path
+            this.addSlice();
+
             const clonePath = new paper.Path({
               segments: outline.segments,
               closed: true
@@ -759,9 +615,6 @@ export class GameScene extends Phaser.Scene {
             }
           }
         }
-        //if (this.drawPath === null) {
-        //  this.drawPath = new paper.Path();
-        //}
       }
     }
 
@@ -783,10 +636,14 @@ export class GameScene extends Phaser.Scene {
     })
   }
 
+  addSlice() {
+    this.slices++;
+    this.game.slices.setText(SLICES+this.slices);
+  }
+
   win() {
     this.scene.pause();
-    let text = [this.i + 1, "Area: " + Math.round(this.target * 100) + ' %', "Slices: " + this.slices];
-    //console.log(text)
+    let text = [this.i + 1, AREA + Math.round(this.target * 100) + ' %', SLICES + this.slices];
     this.game.areaText.setText(text[1]);
     this.game.slicesText.setText(text[2]);
     this.game.winMenu.setVisible(true);
@@ -802,12 +659,5 @@ export class GameScene extends Phaser.Scene {
     if (this.level.willScale && this.cameras.main.zoom !== 1) {
       this.calcArea(this.cameras.main.zoom);
     }
-    /*window.requestAnimationFrame(() => {
-      if (this.checkCrossings(this.drawPath)) {
-        this.graphics.clear();
-        this.drawPath = null;
-      }
-    })*/
   }
-
 }

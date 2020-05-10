@@ -8,92 +8,56 @@
         "image": "https://images.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/ll39u-undefined.png",
         "backgroundColor": "#333333",
         "willScale": false,
-        "targetArea": 0.5,
+        "targetArea": 0.51,
         "balls": [],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              0,
-              500
-            ]
+            "cycles": [0, 500]
           },
           {
             "period": 5000,
-            "cycles": [
-              500,
-              1000
-            ]
+            "cycles": [500, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              1000,
-              1500
-            ]
+            "cycles": [1000, 1500]
           },
           {
             "period": 5000,
-            "cycles": [
-              1500,
-              2000
-            ]
+            "cycles": [1500, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              2000,
-              2500
-            ]
+            "cycles": [2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -443,92 +407,56 @@
         "image": "https://images.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/k6ndz-undefined.png",
         "backgroundColor": "#333333",
         "willScale": false,
-        "targetArea": 0.5,
+        "targetArea": 0.51,
         "balls": [],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              0,
-              500
-            ]
+            "cycles": [0, 500]
           },
           {
             "period": 5000,
-            "cycles": [
-              500,
-              1000
-            ]
+            "cycles": [500, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              1000,
-              1500
-            ]
+            "cycles": [1000, 1500]
           },
           {
             "period": 5000,
-            "cycles": [
-              1500,
-              2000
-            ]
+            "cycles": [1500, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              2000,
-              2500
-            ]
+            "cycles": [2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -999,96 +927,55 @@
         "backgroundColor": "#333333",
         "willScale": false,
         "targetArea": 0.5,
-        "balls": [
-          30,
-          30,
-          15,
-          15
-        ],
+        "balls": [30, 30, 15, 15],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              0,
-              500
-            ]
+            "cycles": [0, 500]
           },
           {
             "period": 5000,
-            "cycles": [
-              500,
-              1000
-            ]
+            "cycles": [500, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              1000,
-              1500
-            ]
+            "cycles": [1000, 1500]
           },
           {
             "period": 5000,
-            "cycles": [
-              1500,
-              2000
-            ]
+            "cycles": [1500, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              2000,
-              2500
-            ]
+            "cycles": [2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -1604,97 +1491,55 @@
         "backgroundColor": "#800000",
         "willScale": false,
         "targetArea": 0.5,
-        "balls": [
-          30,
-          30,
-          15,
-          15,
-          15
-        ],
+        "balls": [30, 30, 15, 15, 15],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              0,
-              500
-            ]
+            "cycles": [0, 500]
           },
           {
             "period": 5000,
-            "cycles": [
-              500,
-              1000
-            ]
+            "cycles": [500, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              1000,
-              1500
-            ]
+            "cycles": [1000, 1500]
           },
           {
             "period": 5000,
-            "cycles": [
-              1500,
-              2000
-            ]
+            "cycles": [1500, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              2000,
-              2500
-            ]
+            "cycles": [2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -2250,93 +2095,55 @@
         "backgroundColor": "#008080",
         "willScale": true,
         "targetArea": 0.22,
-        "balls": [
-          20
-        ],
+        "balls": [20, 20],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              0,
-              500
-            ]
+            "cycles": [0, 500]
           },
           {
             "period": 5000,
-            "cycles": [
-              500,
-              1000
-            ]
+            "cycles": [500, 1000]
           },
           {
             "period": 5000,
-            "cycles": [
-              1000,
-              1500
-            ]
+            "cycles": [1000, 1500]
           },
           {
             "period": 5000,
-            "cycles": [
-              1500,
-              2000
-            ]
+            "cycles": [1500, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              2000,
-              2500
-            ]
+            "cycles": [2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -2737,97 +2544,55 @@
         "backgroundColor": "#333333",
         "willScale": false,
         "targetArea": 0.24,
-        "balls": [
-          30,
-          30,
-          15,
-          15,
-          15
-        ],
+        "balls": [30, 30, 15, 15, 15],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 2000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 2000,
-            "cycles": [
-              1000,
-              2000
-            ]
+            "cycles": [1000, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              1000,
-              1500
-            ]
+            "cycles": [1000, 1500]
           },
           {
             "period": 5000,
-            "cycles": [
-              1500,
-              2000
-            ]
+            "cycles": [1500, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              2000,
-              2500
-            ]
+            "cycles": [2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -3458,97 +3223,55 @@
         "backgroundColor": "#008040",
         "willScale": true,
         "targetArea": 0.28,
-        "balls": [
-          30,
-          30,
-          15,
-          15,
-          15
-        ],
+        "balls": [30, 30, 15, 15, 15],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 3000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 3000,
-            "cycles": [
-              1000,
-              2000
-            ]
+            "cycles": [1000, 2000]
           },
           {
             "period": 3000,
-            "cycles": [
-              2000,
-              3000
-            ]
+            "cycles": [2000, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              1500,
-              2000
-            ]
+            "cycles": [1500, 2000]
           },
           {
             "period": 5000,
-            "cycles": [
-              2000,
-              2500
-            ]
+            "cycles": [2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -4044,101 +3767,55 @@
         "backgroundColor": "#ff8080",
         "willScale": true,
         "targetArea": 0.27,
-        "balls": [
-          30,
-          20,
-          40,
-          10,
-          10
-        ],
+        "balls": [30, 20, 40, 15, 15],
         "obstacles": [
           {
             "period": 1000,
-            "cycles": [
-              1000,
-              1000
-            ]
+            "cycles": [1000, 1000]
           },
           {
             "period": 1000,
-            "cycles": [
-              0,
-              1000
-            ]
+            "cycles": [0, 1000]
           },
           {
             "period": 2500,
-            "cycles": [
-              0,
-              1500
-            ]
+            "cycles": [0, 1500]
           },
           {
             "period": 2500,
-            "cycles": [
-              500,
-              2000
-            ]
+            "cycles": [500, 2000]
           },
           {
             "period": 2500,
-            "cycles": [
-              1000,
-              2450
-            ]
+            "cycles": [1000, 2450]
           },
           {
             "period": 2500,
-            "cycles": [
-              0,
-              500,
-              1500,
-              2500
-            ]
+            "cycles": [0, 500, 1500, 2500]
           },
           {
             "period": 2500,
-            "cycles": [
-              0,
-              1000,
-              2000,
-              2500
-            ]
+            "cycles": [0, 1000, 2000, 2500]
           },
           {
             "period": 5000,
-            "cycles": [
-              2500,
-              3000
-            ]
+            "cycles": [2500, 3000]
           },
           {
             "period": 5000,
-            "cycles": [
-              3000,
-              3500
-            ]
+            "cycles": [3000, 3500]
           },
           {
             "period": 5000,
-            "cycles": [
-              3500,
-              4000
-            ]
+            "cycles": [3500, 4000]
           },
           {
             "period": 5000,
-            "cycles": [
-              4000,
-              4500
-            ]
+            "cycles": [4000, 4500]
           },
           {
             "period": 5000,
-            "cycles": [
-              4500,
-              5000
-            ]
+            "cycles": [4500, 5000]
           }
         ],
         "path": [
@@ -4874,7 +4551,7 @@
           "key": "levels",
           "name": "Levels",
           "description": "Customize level",
-          "type": "custom<https://8080-a6997256-a472-4dd4-9dca-f9d85efdd371.koji-staging.com>[]",
+          "type": "custom<dot-slice-level-editor-vcc>[]",
           "arrayOptions": {
             "addItemLabel": "Add Level"
           }

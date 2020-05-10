@@ -4,21 +4,8 @@
       "kind": "webfonts#webfont",
       "family": "Comfortaa",
       "category": "display",
-      "variants": [
-        "300",
-        "regular",
-        "500",
-        "600",
-        "700"
-      ],
-      "subsets": [
-        "latin",
-        "cyrillic",
-        "cyrillic-ext",
-        "greek",
-        "latin-ext",
-        "vietnamese"
-      ],
+      "variants": ["300", "regular", "500", "600", "700"],
+      "subsets": ["latin", "cyrillic", "cyrillic-ext", "greek", "latin-ext", "vietnamese"],
       "version": "v28",
       "lastModified": "2020-02-05",
       "files": {
@@ -35,7 +22,19 @@
     "win": "YOU WIN!",
     "select_level": "Select Level",
     "resume": "Resume",
-    "restart": "Restart Level"
+    "restart": "Restart Level",
+    "tutorial": [
+      ["SLICE the cat.", "Click & Drag to draw a SLICE.", "To win, pass beyond", "  the WHITE marker."],
+      ["Be careful! White edges are unSLICable."],
+      ["Don't SLICE between the balls."],
+      ["Beware!", "White edges are marching."],
+      ["What does not kill me makes me larger.", "Be quick!"],
+      [],
+      [],
+      ["Try to beat the dinosaur before it gets too BIG!"]
+    ],
+    "slices": "Slices",
+    "area": "Area"
   },
   "@@editor": [
     {
@@ -68,28 +67,46 @@
           "description": "Text displayed on the menu button",
           "type": "string"
         },
-            {
+        {
           "key": "win",
           "name": "Win text",
           "description": "Text displayed when level completed",
           "type": "string"
         },
-              {
+        {
           "key": "select_level",
           "name": "Level select button text",
           "description": "Text displayed on the level-select button",
           "type": "string"
         },
-                {
+        {
           "key": "resume",
           "name": "Resume button text",
           "description": "Text displayed on the resume button",
           "type": "string"
         },
-                {
+        {
           "key": "restart",
           "name": "Restart level button text",
           "description": "Text displayed on the level-restart button",
+          "type": "string"
+        },
+        {
+          "key": "tutorial",
+          "name": "Tutorial texts",
+          "description": "Informational text displayed on each level",
+          "type": "string[][]"
+        },
+        {
+          "key": "slices",
+          "name": "Slices text",
+          "description": "Text for slice count",
+          "type": "string"
+        },
+        {
+          "key": "area",
+          "name": "Area % text",
+          "description": "Text for area %",
           "type": "string"
         }
       ]

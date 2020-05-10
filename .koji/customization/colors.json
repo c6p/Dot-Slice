@@ -3,7 +3,8 @@
     "background": "#000000",
     "font": "#FFFFFF",
     "button_font": "#FFFFFF",
-    "button": "#00AAFF"
+    "button": "#00AAFF",
+    "gameObjects": "#FFFFFF"
   },
   "@@editor": [
     {
@@ -34,6 +35,12 @@
           "key": "button",
           "name": "Button Background Color",
           "description": "Background color for buttons",
+          "type": "color"
+        },
+        {
+          "key": "gameObjects",
+          "name": "Game Objects Color",
+          "description": "Color for balls, lines and effects",
           "type": "color"
         }
       ]
