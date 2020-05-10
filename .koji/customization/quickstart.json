@@ -1,0 +1,5 @@
+{
+  "quickstart": {
+    "items": ["strings.title", "images.levels", "colors.gameObjects", "colors.button", "audio.background"]
+  }
+}
