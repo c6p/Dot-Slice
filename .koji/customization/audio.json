@@ -3,7 +3,8 @@
     "background": "https://objects.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/of1qr-BeatThee.mp3",
     "hit": "https://objects.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/kufm9-57918__denalwa__metalpole.wav",
     "cut": "https://objects.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/qzqna-327894__kreastricon62__bushcut.wav",
-    "nocut": "https://objects.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/1flzy-84616__langerium__aircut.wav"
+    "nocut": "https://objects.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/1flzy-84616__langerium__aircut.wav",
+    "crash": "https://objects.koji-cdn.com/6df185c6-a1f1-41fc-8b00-886c503688af/rmb1i-450780__kyles__bottlebeerglassdropfallsmashonfloororconcrete.wav"
   },
   "@@editor": [
     {
@@ -21,19 +22,25 @@
         {
           "key": "cut",
           "name": "Cut sound",
-          "description": "Sound played for successful cut",
+          "description": "Sound played for successful cuts",
           "type": "sound"
         },
         {
           "key": "nocut",
           "name": "No-cut sound",
-          "description": "Sound played for unsuccessful cut",
+          "description": "Sound played for unsuccessful cuts",
           "type": "sound"
         },
         {
           "key": "hit",
           "name": "Hit sound",
           "description": "Sound played for obstacle hits",
+          "type": "sound"
+        },
+        {
+          "key": "crash",
+          "name": "Crash sound",
+          "description": "Sound played for ball crashes",
           "type": "sound"
         }
       ]

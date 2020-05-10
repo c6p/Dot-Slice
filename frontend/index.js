@@ -45,6 +45,7 @@ var config = {
     UIScene,
   ],
   transparent: true,
+  //renderer: Phaser.WEBGL
 }
 
 var WebFont = require('webfontloader');

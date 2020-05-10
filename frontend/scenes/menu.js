@@ -37,6 +37,7 @@ export class MenuScene extends Phaser.Scene {
     this.load.audio('cut', [Koji.config.audio.cut]);
     this.load.audio('nocut', [Koji.config.audio.nocut]);
     this.load.audio('hit', [Koji.config.audio.hit]);
+    this.load.audio('crash', [Koji.config.audio.crash]);
   }
 
   create() {
@@ -69,6 +70,7 @@ export class MenuScene extends Phaser.Scene {
     this.game.cut = this.sound.add('cut');
     this.game.nocut = this.sound.add('nocut');
     this.game.hit = this.sound.add('hit');
+    this.game.crash = this.sound.add('crash');
   }
 
   update() {}

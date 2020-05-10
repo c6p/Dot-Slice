@@ -1003,7 +1003,6 @@
           30,
           30,
           15,
-          15,
           15
         ],
         "obstacles": [
@@ -2252,7 +2251,7 @@
         "willScale": true,
         "targetArea": 0.22,
         "balls": [
-          18
+          20
         ],
         "obstacles": [
           {
@@ -4047,9 +4046,8 @@
         "targetArea": 0.27,
         "balls": [
           30,
-          15,
+          20,
           40,
-          10,
           10,
           10
         ],
